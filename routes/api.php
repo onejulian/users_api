@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\CharacterDetailController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/favorites', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::get('/characters/page/{page}', [CharacterController::class, 'index'])->name('characters.index');
     Route::get('/characters/{id}', [CharacterDetailController::class, 'show'])->name('characters.show');
+    Route::put('/user/update-more-info', [UserController::class, 'updateMoreInfo'])->name('user.updateMoreInfo');
 });

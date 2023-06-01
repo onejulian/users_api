@@ -24,11 +24,12 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 
-Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::middleware(['cors'])->group(function () {
+    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+});
 
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum', 'cors'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');

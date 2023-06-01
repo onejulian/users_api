@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'https://glowing-cranachan-0a3886.netlify.app/*',
     ];
 }
